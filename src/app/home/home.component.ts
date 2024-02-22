@@ -86,7 +86,7 @@ export class HomeComponent {
 
   fetchProducts(page: number, perPage: number) {
     this.productsService
-      .getProducts('https://rich-pear-monkey-shoe.cyclic.app/clothes', { page, perPage })
+      .getProducts('https://nodejs-server-065i.onrender.com/clothes', { page, perPage })
       .subscribe({
         next: (data: Products) => {
           this.products = data.items;
@@ -100,7 +100,7 @@ export class HomeComponent {
 
   editProduct(product: Product, id: number) {
     this.productsService
-      .editProduct(`https://rich-pear-monkey-shoe.cyclic.app/${id}`, product)
+      .editProduct(`https://nodejs-server-065i.onrender.com/${id}`, product)
       .subscribe({
         next: (data) => {
           console.log(data);
@@ -115,7 +115,7 @@ export class HomeComponent {
 
   deleteProduct(id: number) {
     this.productsService
-      .deleteProduct(`https://rich-pear-monkey-shoe.cyclic.app/${id}`)
+      .deleteProduct(`https://nodejs-server-065i.onrender.com/${id}`)
       .subscribe({
         next: (data) => {
           console.log(data);
@@ -130,7 +130,7 @@ export class HomeComponent {
 
   addProduct(product: Product) {
     this.productsService
-      .addProduct(`https://rich-pear-monkey-shoe.cyclic.app/clothes`, product)
+      .addProduct(`https://nodejs-server-065i.onrender.com/clothes`, product)
       .subscribe({
         next: (data) => {
           console.log(data);
