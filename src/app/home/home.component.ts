@@ -1,14 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
-import { ProductsService } from '../services/products.service';
-import { Product, Products } from '../../types';
-import { ProductComponent } from '../components/product/product.component';
-import { CommonModule } from '@angular/common';
-import { Paginator, PaginatorModule } from 'primeng/paginator';
-import { EditPopupComponent } from '../components/edit-popup/edit-popup.component';
-import { ButtonModule } from 'primeng/button';
+import { Component, ViewChild } from "@angular/core";
+import { ProductsService } from "../services/products.service";
+import { Product, Products } from "../../types";
+import { ProductComponent } from "../components/product/product.component";
+import { CommonModule } from "@angular/common";
+import { Paginator, PaginatorModule } from "primeng/paginator";
+import { EditPopupComponent } from "../components/edit-popup/edit-popup.component";
+import { ButtonModule } from "primeng/button";
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   standalone: true,
   imports: [
     ProductComponent,
@@ -17,13 +17,13 @@ import { ButtonModule } from 'primeng/button';
     EditPopupComponent,
     ButtonModule,
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: "./home.component.html",
+  styleUrl: "./home.component.scss",
 })
 export class HomeComponent {
   constructor(private productsService: ProductsService) {}
 
-  @ViewChild('paginator') paginator: Paginator | undefined;
+  @ViewChild("paginator") paginator: Paginator | undefined;
 
   products: Product[] = [];
 
@@ -52,9 +52,9 @@ export class HomeComponent {
 
   selectedProduct: Product = {
     id: 0,
-    name: '',
-    image: '',
-    price: '',
+    name: "",
+    image: "",
+    price: "",
     rating: 0,
   };
 
@@ -73,7 +73,7 @@ export class HomeComponent {
   }
 
   onProductOutput(product: Product) {
-    console.log(product, 'Output');
+    console.log(product, "Output");
   }
 
   onPageChange(event: any) {
@@ -86,7 +86,10 @@ export class HomeComponent {
 
   fetchProducts(page: number, perPage: number) {
     this.productsService
-      .getProducts('https://nodejs-server-065i.onrender.com/clothes', { page, perPage })
+      .getProducts("https://dull-rose-stingray-fez.cyclic.app/clothes", {
+        page,
+        perPage,
+      })
       .subscribe({
         next: (data: Products) => {
           this.products = data.items;
@@ -100,7 +103,7 @@ export class HomeComponent {
 
   editProduct(product: Product, id: number) {
     this.productsService
-      .editProduct(`https://nodejs-server-065i.onrender.com/${id}`, product)
+      .editProduct(`https://dull-rose-stingray-fez.cyclic.app/${id}`, product)
       .subscribe({
         next: (data) => {
           console.log(data);
@@ -115,7 +118,7 @@ export class HomeComponent {
 
   deleteProduct(id: number) {
     this.productsService
-      .deleteProduct(`https://nodejs-server-065i.onrender.com/${id}`)
+      .deleteProduct(`https://dull-rose-stingray-fez.cyclic.app/${id}`)
       .subscribe({
         next: (data) => {
           console.log(data);
@@ -130,7 +133,7 @@ export class HomeComponent {
 
   addProduct(product: Product) {
     this.productsService
-      .addProduct(`https://nodejs-server-065i.onrender.com/clothes`, product)
+      .addProduct(`https://dull-rose-stingray-fez.cyclic.app/clothes`, product)
       .subscribe({
         next: (data) => {
           console.log(data);
